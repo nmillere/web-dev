@@ -8,6 +8,12 @@
 
 ## Usage
 
+```
+vagrant up
+vagrant ssh-config
+copy output into ssh config
+use vs code remote extension pack to remote in
+```
 
 <!-- Refs -->
 [cygwin]: https://www.cygwin.com/index.html
