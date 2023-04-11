@@ -13,6 +13,8 @@ vagrant up
 vagrant ssh-config
 copy output into ssh config
 use vs code remote extension pack to remote in
+
+ssh-keygen -t ed25519 -C "youremail@email.com"
 ```
 
 <!-- Refs -->
