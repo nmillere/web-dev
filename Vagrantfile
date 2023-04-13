@@ -3,19 +3,19 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "hashicorp/bionic64"
+  config.ssh.username = "vagrant"
   
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "public_network"
+  config.vm.define "web-dev" do |web|
+    web.vm.hostname = "web-devbox"
+    web.vm.network "forwarded_port", guest: 80, host: 8080
+    web.vm.network "public_network"
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = 4096
+    web.vm.provider "virtualbox" do |vb|
+      vb.name = "web-devbox"
+      vb.memory = 4096
+    end
+    
+    web.vm.provision "dev", type: "shell", path: "provision/dev.sh"
+    web.vm.provision "nvm", type: "shell", path: "provision/nvm.sh"
   end
-  
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install yarn
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-    source ~/.bashrc
-    nvm install v15.3.0
-  SHELL
 end
