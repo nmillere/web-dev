@@ -2,6 +2,8 @@
 # Install/configure various dev tools
 
 set -e
+add-apt-repository ppa:git-core/ppa -y
+apt-get update && apt-get upgrade
 apt-get install -y git git-completion zip unzip
 
 # Git aliases
