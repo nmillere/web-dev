@@ -15,6 +15,7 @@ copy output into ssh config
 use vs code remote extension pack to remote in
 
 ssh-keygen -t ed25519 -C "youremail@email.com"
+add pub key to https://github.com/settings/keys
 ```
 
 <!-- Refs -->
